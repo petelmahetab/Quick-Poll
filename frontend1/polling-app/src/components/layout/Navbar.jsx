@@ -20,7 +20,7 @@ const Navbar = ({ activeMenu }) => {
         )}
       </button>
 
-      <h2 className="text-lg font-medium text-white">Quick Polling Spot</h2>
+      <h2 className="text-lg font-medium text-white fkex gap-2 font-mono">Quick Polling Spot</h2>
 
       {openSideMenu && (
         <div className="fixed top-[61px] -ml-4 bg-white">
