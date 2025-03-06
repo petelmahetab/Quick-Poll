@@ -15,9 +15,9 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-app.get('/', (req, res) => {
-  res.send('Quick Poll Backend is running!');
-});
+// app.get('/', (req, res) => {
+//   res.send('Quick Poll Backend is running Fuck u!');
+// });
 app.use(express.json());
 
 connectDB();
