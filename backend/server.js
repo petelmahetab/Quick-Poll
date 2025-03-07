@@ -15,16 +15,21 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-// app.get('/', (req, res) => {
-//   res.send('Quick Poll Backend is running Fuck u!');
-// });
-app.use(express.json());
 
+app.use(express.json());
 connectDB();
+
+app.get('/', (req, res) => {
+  res.send('Quick Poll Backend is running!');
+});
 
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/poll", pollRoutes);
-
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-module.exports = app; 
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, () => {
+  console.log(`Server is listening on ${PORT}`);
+});
+
+module.exports = app;
