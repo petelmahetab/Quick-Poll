@@ -33,10 +33,23 @@ connectDB()
     console.error("Unexpected error during MongoDB connection:", err.message);
   });
 
+// Modified CORS configuration
+const allowedOrigins = [
+  "http://localhost:5173", // Local frontend
+  "https://quick-poll-app-lh7s.vercel.app", // Deployed frontend
+];
+
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: (origin, callback) => {
+      // Allow requests with no origin (e.g., Postman) or if origin is in allowed list
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Added OPTIONS
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
