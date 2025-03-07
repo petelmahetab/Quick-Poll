@@ -7,33 +7,40 @@ const connectDB = require("./config/db");
 
 const app = express();
 
-// CORS configuration
+// Define allowed origins
 const allowedOrigins = [
-  process.env.CLIENT_URL || "http://localhost:5173",
-  "https://quick-poll-app-lh7s.vercel.app",
-];
+  "http://localhost:5173",          // Local frontend (adjust port if different)
+  "https://poll-app-plum.vercel.app", // Deployed frontend domain
+  process.env.CLIENT_URL,           // Additional client URL from .env
+].filter(Boolean);
 
+console.log(process.env.CLIENT_URL)
+// CORS configuration
 app.use(
   cors({
     origin: (origin, callback) => {
+     
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
+        console.log(`CORS blocked origin: ${origin}`);
         callback(new Error("Not allowed by CORS"));
       }
     },
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true, // If you’re using cookies or auth tokens
   })
 );
 
-// Handle preflight requests
 app.options("*", cors());
+
 
 app.use(express.json());
 
 // Routes
 app.get("/", (req, res) => {
+  console.log("Handling GET / request");
   res.send("Quick Poll Backend is running!");
 });
 
@@ -44,5 +51,10 @@ app.use("/api/v1/poll", pollRoutes);
 connectDB()
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err.message));
+
+  const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 module.exports = app;
