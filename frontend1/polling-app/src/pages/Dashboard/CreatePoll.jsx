@@ -94,7 +94,7 @@ const CreatePoll = () => {
     }
 
     handleValueChange("error", "");
-    console.log("NO_ERR", { pollData });
+   // console.log("NO_ERR", { pollData });
 
     const optionData = await getOptions();
 

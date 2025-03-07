@@ -1,5 +1,5 @@
 
-export const BASE_URL = "https://quick-poll-qfly7pkmx-petelmahetabs-projects.vercel.app";
+export const BASE_URL = "http://localhost:8000";
 
 // utils/apiPaths.js
 export const API_PATHS = {
