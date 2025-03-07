@@ -14,7 +14,7 @@ const app = express();
 console.log(
   "MONGO_URI:",
   process.env.MONGO_URI
-    ? process.env.MONGO_URI.replace(/:\/\/.*@/, "://<hidden>@")
+    ? process.env.MONGO_URI.replace(/:\/\/.*@/, "://patelmahetab9020:we7nLuAV0Kbn51qu@")
     : "Not defined"
 );
 console.log("CLIENT_URL:", process.env.CLIENT_URL || "Not defined");
