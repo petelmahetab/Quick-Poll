@@ -1,4 +1,5 @@
-export const BASE_URL = "http://localhost:8000";
+
+export const BASE_URL = "https://quick-poll-qfly7pkmx-petelmahetabs-projects.vercel.app";
 
 // utils/apiPaths.js
 export const API_PATHS = {
@@ -23,3 +24,4 @@ export const API_PATHS = {
     UPLOAD_IMAGE: "/api/v1/auth/upload-image",
   },
 };
+
