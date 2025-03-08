@@ -11,7 +11,7 @@ const app = express();
 // Define allowed origins
 const allowedOrigins = [
   "https://*.vercel.app",
-  process.env.CLIENT_URL,
+  "https://quick-poll-2-backend.onrender.com",
 ].filter(Boolean);
 
 console.log("CLIENT_URL:", process.env.CLIENT_URL);
