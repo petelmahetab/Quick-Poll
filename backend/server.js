@@ -9,9 +9,9 @@ const app = express();
 
 // Define allowed origins
 const allowedOrigins = [
-  "http://localhost:5173",          // Local frontend (adjust port if different)
-  "https://poll-app-plum.vercel.app", // Deployed frontend domain
-  process.env.CLIENT_URL,           // Additional client URL from .env
+  "http://localhost:5173",          
+  "https://poll-app-plum.vercel.app", 
+  process.env.CLIENT_URL,           
 ].filter(Boolean);
 
 console.log(process.env.CLIENT_URL)
