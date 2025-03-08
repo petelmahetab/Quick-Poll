@@ -10,9 +10,7 @@ const app = express();
 
 // Define allowed origins
 const allowedOrigins = [
-  "http://localhost:5173",
-  "https://poll-app-plum.vercel.app",
-  "https://polling-bagnewkt4-petelmahetabs-projects.vercel.app",
+  "https://*.vercel.app",
   process.env.CLIENT_URL,
 ].filter(Boolean);
 
@@ -22,16 +20,22 @@ console.log("CLIENT_URL:", process.env.CLIENT_URL);
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
+      console.log("Request origin:", origin); // Log the origin being checked
+      if (!origin) {
+        console.log("No origin, allowing request"); // e.g., Postman or server-to-server
+        callback(null, true);
+      } else if (allowedOrigins.includes(origin)) {
+        console.log(`Origin ${origin} allowed`);
         callback(null, true);
       } else {
         console.log(`CORS blocked origin: ${origin}`);
-        callback(new Error("Not allowed by CORS"));
+        callback(new Error("Not allowed by CORS"), false);
       }
     },
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], 
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true, 
+    credentials: true,
+    optionsSuccessStatus: 200,
   })
 );
 
