@@ -1,5 +1,5 @@
 
-export const BASE_URL ="https://poll-app-sigma-one.vercel.app/";
+export const BASE_URL ="http://localhost:8000";
 
   console.log(import.meta.env.MODE)
 // utils/apiPaths.js
