@@ -19,8 +19,7 @@ const CreatePoll = () => {
     question: "",
     type: "",
     options: [],
-    imageOptions: [],
-
+    imageOptions: [], 
     error: "",
   });
 
@@ -43,35 +42,44 @@ const CreatePoll = () => {
     });
   };
 
-  // Upload Images and Get Image Urls
-  const updateImageAndGetLink = async (imageOptions) => {
-    const optionPromises = imageOptions.map(async (imageOption) => {
-      try {
-        const imgUploadRes = await uploadImage(imageOption.file);
-        return imgUploadRes.imageUrl || "";
-      } catch (error) {
-        toast.error(`Error uploading image: ${imageOption.file.name}`);
-        return "";
-      }
-    });
-
-    const optionArr = await Promise.all(optionPromises);
-    return optionArr;
-  };
-
-  const getOptions = async () => {
-    switch (pollData.type) {
-      case "single-choice":
-        return pollData.options;
-
-      case "image-based":
-        const options = await updateImageAndGetLink(pollData.imageOptions);
-        return options;
-
-      default:
-        return [];
+  
+ // Upload Images and Get Image Urls
+const updateImageAndGetLink = async (imageOptions) => {
+  const optionPromises = imageOptions.map(async (imageOption) => {
+    try {
+      const imgUploadRes = await uploadImage(imageOption.file);
+      return imgUploadRes; // Expecting a URL string
+    } catch (error) {
+      toast.error(`Error uploading image: ${imageOption.file.name}`);
+      return "";
     }
-  };
+  });
+
+  const optionArr = await Promise.all(optionPromises);
+  return optionArr.filter(url => url); // Filter out empty strings
+};
+
+const getOptions = async () => {
+  switch (pollData.type) {
+    case "single-choice":
+      return pollData.options;
+
+    case "image-based":
+      const uploadedUrls = await updateImageAndGetLink(pollData.imageOptions);
+     
+      setPollData((prev) => ({
+        ...prev,
+        imageOptions: prev.imageOptions.map((opt, index) => ({
+          ...opt,
+          url: uploadedUrls[index] || "",
+        })),
+      }));
+      return uploadedUrls;
+
+    default:
+      return [];
+  }
+};
 
   // Create a New Poll
   const handleCreatePoll = async () => {
