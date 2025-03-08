@@ -1,5 +1,5 @@
 
-export const BASE_URL ="https://quick-poll-2-backend.onrender.com";
+export const BASE_URL ="https://quick-poll-iota.vercel.app";
 
   console.log(import.meta.env.MODE)
 // utils/apiPaths.js
