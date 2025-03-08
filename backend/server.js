@@ -10,21 +10,21 @@ const app = express();
 
 // Define allowed origins
 const allowedOrigins = [
-  "https://*.vercel.app",
   "https://quick-poll-iota.vercel.app",
-].filter(Boolean);
+];
 
-console.log("CLIENT_URL:", process.env.CLIENT_URL);
-
-// CORS configuration
 app.use(
   cors({
     origin: (origin, callback) => {
-      console.log("Request origin:", origin); // Log the origin being checked
+      console.log("Request origin:", origin);
       if (!origin) {
-        console.log("No origin, allowing request"); // e.g., Postman or server-to-server
-        callback(null, true);
-      } else if (allowedOrigins.includes(origin)) {
+        console.log("No origin, allowing request");
+        return callback(null, true);
+      }
+      const isAllowed = allowedOrigins.some((allowed) =>
+        origin === allowed || origin.startsWith("https://") && origin.includes("vercel.app")
+      );
+      if (isAllowed) {
         console.log(`Origin ${origin} allowed`);
         callback(null, true);
       } else {
@@ -32,12 +32,19 @@ app.use(
         callback(new Error("Not allowed by CORS"), false);
       }
     },
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], 
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
     optionsSuccessStatus: 200,
   })
 );
+
+app.use((err, req, res, next) => {
+  if (err.message === "Not allowed by CORS") {
+    return res.status(403).json({ error: "CORS policy violation" });
+  }
+  next(err);
+});
 
 app.options("*", cors());
 
