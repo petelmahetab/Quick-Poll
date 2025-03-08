@@ -1,7 +1,5 @@
 
-export const BASE_URL = import.meta.env.MODE === 'production' 
-  ? 'http://localhost:8000' 
-  : 'https://poll-app-sigma-one.vercel.app/';
+export const BASE_URL ="https://poll-app-sigma-one.vercel.app/";
 
   console.log(import.meta.env.MODE)
 // utils/apiPaths.js
