@@ -10,7 +10,7 @@ const app = express();
 
 // Define allowed origins
 const allowedOrigins = [
-  "https://quick-poll-peach.vercel.app/",
+  "*",
 ];
 
 app.use(
