@@ -1,5 +1,5 @@
 
-export const BASE_URL ="https://*.vercel.com/";
+export const BASE_URL ="https://quick-poll-peach.vercel.app/";
 
   console.log(import.meta.env.MODE)
 // utils/apiPaths.js
