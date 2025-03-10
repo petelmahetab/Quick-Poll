@@ -18,8 +18,7 @@ const CreatePoll = () => {
   const [pollData, setPollData] = useState({
     question: "",
     type: "",
-    options: [],
-    imageOptions: [], 
+    options: [], 
     error: "",
   });
 
