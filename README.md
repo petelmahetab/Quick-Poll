@@ -27,17 +27,18 @@ The Full Stack Polling App is designed to provide an interactive platform for cr
 ## 🖼️ Screenshots
 
 ### 1. Dashboard
-![image](https://github.com/user-attachments/assets/9bf684b9-b8e3-4c04-b27f-268cdf7a271b)
-
+![Screenshot (98)](https://github.com/user-attachments/assets/fa762ebb-2803-483c-9fda-9812c42c3772)
 *Description*: The main dashboard showing available polls and user stats.
 
 ### 2. Create Poll Page
-![image](https://github.com/user-attachments/assets/ca8468ed-685b-4061-92eb-e37b789259d1)
-
+![Screenshot (101)](https://github.com/user-attachments/assets/c0264376-26ca-4df8-9bca-51a38d41d772)
 *Description*: Interface for creating a new poll with options.
 
+
 ### 3. Poll Voting Interface
-![image](https://github.com/user-attachments/assets/603614a5-d2aa-4834-a9c5-046c0b987dd1)
+![Screenshot (100)](https://github.com/user-attachments/assets/76f57b7a-a7d4-453e-81ff-869b179daf8a)
+
+
 *Description*: A sample poll where users can vote and see results.
 
 ---
