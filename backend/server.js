@@ -10,7 +10,7 @@ const app = express();
 
 // Define allowed origins
 const allowedOrigins = [
-  "*",
+  "https://pollwithme.vercel.app/",
 ];
 
 app.use(
