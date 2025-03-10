@@ -188,8 +188,7 @@ const getOptions = async () => {
             </div>
           </div>
         )}
-
-        {pollData.type === "image-based" && (
+{/*          {pollData.type === "image-based" && (
           <div className="mt-5">
             <label className="text-xs font-medium text-slate-600">
               IMAGE OPTIONS
@@ -205,6 +204,7 @@ const getOptions = async () => {
             </div>
           </div>
         )}
+*/}
 
         {pollData.error && (
           <p className="text-xs font-medium text-red-500 mt-5">
