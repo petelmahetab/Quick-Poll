@@ -1,5 +1,5 @@
 
-export const BASE_URL ="http://localhost:8000";
+export const BASE_URL ="https://*.vercel.com/";
 
   console.log(import.meta.env.MODE)
 // utils/apiPaths.js
