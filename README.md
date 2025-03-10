@@ -38,6 +38,7 @@ The Full Stack Polling App is designed to provide an interactive platform for cr
 
 ### 3. Poll Voting Interface
 
+![Screenshot (103)](https://github.com/user-attachments/assets/5ad3f442-4138-422f-a328-3c192bad5b72)
 
 *Description*: A sample poll where users can vote and see results.
 
