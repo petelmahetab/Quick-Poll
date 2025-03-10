@@ -1,5 +1,5 @@
 
-export const BASE_URL ="https://quick-poll-iota.vercel.app/";
+export const BASE_URL ="http://localhost:8000";
 
   console.log(import.meta.env.MODE)
 // utils/apiPaths.js
